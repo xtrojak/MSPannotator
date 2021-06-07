@@ -14,6 +14,6 @@ cas_to_inchikey <- function(cas_number) {
 #' @return appropriate SMILES value
 #' @export
 cas_to_smiles <- function(cas_number) {
-  result <- webchem::cir_query(cas_number, representation = 'smiles', resolver = 'cas_number')
+  result <- webchem::cir_query(cas_number, representation = 'smiles', resolver = 'cas_number', match = "first", verbose = FALSE)
   return(result)
 }

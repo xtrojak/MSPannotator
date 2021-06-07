@@ -4,15 +4,14 @@
 \alias{annotate_cas_csv}
 \title{Annotates data by InChiKey and SMILES based on CAS numbers}
 \usage{
-annotate_cas_csv(csv_filename, cas_column)
+annotate_cas_csv(input_csv, output_csv, cas_column)
 }
 \arguments{
-\item{csv_filename}{source CSV file containing CAS numbers}
+\item{input_csv}{source CSV file containing CAS numbers}
+
+\item{output_csv}{enriched output CSV file}
 
 \item{cas_column}{identification of column with CAS numbers}
-}
-\value{
-table extended by InChiKey and SMILES values
 }
 \description{
 Annotates data by InChiKey and SMILES based on CAS numbers

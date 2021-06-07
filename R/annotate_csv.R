@@ -1,12 +1,13 @@
 #' Annotates data by InChiKey and SMILES based on CAS numbers
 #'
-#' @param csv_filename source CSV file containing CAS numbers
+#' @param input_csv source CSV file containing CAS numbers
+#' @param output_csv enriched output CSV file
 #' @param cas_column identification of column with CAS numbers
-#' @return table extended by InChiKey and SMILES values
 #' @export
-annotate_cas_csv <- function(csv_filename, cas_column) {
-  cas_numbers <- read.csv(file = csv_filename)
+annotate_cas_csv <- function(input_csv, output_csv, cas_column) {
+  cas_numbers <- read.csv(file = input_csv)
   cas_numbers$inchikey <- cas_to_inchikey(cas_numbers[[cas_column]])
   cas_numbers$smiles <- cas_to_smiles(cas_numbers[[cas_column]])
-  return(cas_numbers)
+  cas_numbers <- apply(cas_numbers, 2, as.character)
+  write.csv(cas_numbers, output_csv)
 }
